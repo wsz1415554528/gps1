@@ -10,8 +10,8 @@
 #include <stdio.h>
 int main()
 {
-    FILE *fp=fopen("//Users/s20161104602//Desktop//gps", "r");
-    FILE *fp1=fopen("//Users//s20161104602//Desktop//gps", "r+");
+    FILE *fp=fopen("//Users//s20161104602//Desktop//gps//GPS170510.log", "r");
+    FILE *fp1=fopen("//Users//s20161104602//Desktop//gps//biaodan.csv", "r+");
     int i;
     char g1[63];
     char g2[70];
@@ -77,4 +77,34 @@ int main()
             
             
             
-     
+            
+            for(i=0;i<2;i++)
+                s[i]=g1[i+7];
+            s[2]='\0';
+            
+            for(i=0;i<2;i++)
+                m[i]=g1[i+9];
+            m[2]='\0';
+            
+            for(i=0;i<2;i++)
+                h[i]=g1[i+11];
+            h[2]='\0';
+            
+            printf("时间：%s时%s分%s秒\n",s,m,h);
+            fprintf(fp1,"时间：%s时%s分%s秒,",s,m,h);
+            
+            
+            
+            
+            
+            for(i=0;i<4;i++)
+                height[i]=g2[i+43];
+            height[4]='\0';
+            printf("海拔：%s\n",height);
+            fprintf(fp1,"海拔：%s米\n,",height);
+        }
+    }
+    fclose(fp);
+    return 0;
+}
+
